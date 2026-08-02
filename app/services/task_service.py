@@ -1,26 +1,14 @@
+from app.repositories.task_repository import TaskRepository
+
+task_repository = TaskRepository()
+
 class TaskService:
     def create_task(self,task):
+        created_task =  task_repository.create_task(task)
         return {
-            "message": "Task created successfully",
-            "task": task
+            "message": "Task Created Successfully",
+            "task": created_task
         }   
 
     def get_tasks(self):
-        return {
-            "message": "Tasks fetched successfully",
-            "tasks": [
-                {
-                    "id": 1,
-                    "title": "Task 1",
-                    "description": "Task 1",
-                    "completed": False
-                },
-                {
-                    "id": 2,
-                    "title": "Task 2",
-                    "description": "Task 2",
-                    "completed": False
-                }
-            ]
-        }
-    
+        return task_repository.get_tasks()
